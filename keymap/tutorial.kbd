@@ -67,7 +67,7 @@
   - allow-cmd: `true` or `false`, defaults to `false`
 
     If this is set to `false`, any action that runs a shell-command will simply
-    log to `stdout` without ever running (log-level info). Don't ever enable
+    log to `stderr` without ever running (log-level info). Don't ever enable
     this on a configuration that you do not trust, because:
 
       (cmd-button "rm -rf ~/*")

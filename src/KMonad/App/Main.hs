@@ -55,7 +55,9 @@ main = getCmd >>= runCmd
 -- 3. Maybe start KMonad
 runCmd :: Cmd -> IO ()
 runCmd c = do
-  o <- logOptionsHandle stdout False <&> setLogMinLevel (c^.logLvl)
+  hSetBuffering stdout LineBuffering
+  hSetBuffering stderr LineBuffering
+  o <- logOptionsHandle stderr False <&> setLogMinLevel (c^.logLvl)
   withLogFunc o $ \f -> runRIO f $ do
     cfg <- loadConfig c
     unless (c^.dryRun) $ startApp cfg

@@ -209,11 +209,11 @@ void HID_UnregisterDevice(USHORT usage)
     wc.cbWndExtra    = 0;
     wc.hbrBackground = NULL;
 
-    fprintf(stdout, "trying to make window class\n");
+    fprintf(stderr, "trying to make window class\n");
     if ( !RegisterClassEx(&wc) ) { last_error(); }
-    fprintf(stdout, "succeeded");
+    fprintf(stderr, "succeeded");
 
-    fprintf(stdout, "hello\n");
+    fprintf(stderr, "hello\n");
     HWND hwnd = CreateWindowEx(
         0,
         CLASS_NAME, // Window class
@@ -246,7 +246,7 @@ LRESULT CALLBACK callback(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         }
 
         case WM_INPUT: {
-            fprintf(stdout, "hello");
+            fprintf(stderr, "hello");
             UINT dwSize;
 
             GetRawInputData((HRAWINPUT)lParam, RID_INPUT, NULL, &dwSize, sizeof(RAWINPUTHEADER));
