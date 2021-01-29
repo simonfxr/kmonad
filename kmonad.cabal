@@ -141,7 +141,7 @@ executable kmonad
   ghc-options:
       -threaded
       -rtsopts
-      -with-rtsopts=-N
+      "-with-rtsopts=-N --nonmoving-gc"
   main-is:
       Main.hs
   default-language:
